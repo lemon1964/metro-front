@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
 // export const contentType = "image/png";
-export const size = { width: 1200, height: 630 };
+// export const size = { width: 1200, height: 630 };
 
 function gradientForLP(lp: string): string {
   const map: Record<string, string> = {
@@ -37,8 +37,8 @@ export async function GET(req: Request) {
       (
         <div
           style={{
-            width: `${size.width}px`,
-            height: `${size.height}px`,
+            width: 1200,
+            height: 630,
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -108,7 +108,7 @@ export async function GET(req: Request) {
           </div>
         </div>
       ),
-      { ...size }
+      // { ...size }
     );    
   } catch (err) {
     return new Response(`OG error: ${(err as Error).message}`, { status: 500 });
