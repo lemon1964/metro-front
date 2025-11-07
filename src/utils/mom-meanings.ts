@@ -1,3 +1,4 @@
+// src/utils/mom-meanings.ts
 import lifePathData from "@data/meanings/life-path.json";
 import nameNumberData from "@data/meanings/name-number.json";
 import hintsDataJson from "@data/meanings/hints.json";

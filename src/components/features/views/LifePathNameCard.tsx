@@ -2,7 +2,6 @@
 "use client";
 import FadeCard from "@ui/FadeCard";
 import DemoBadge from "@ui/DemoBadge";
-import { ComputedResult } from "@/@types/mom";
 
 export default function LifePathNameCard({ result }: { result: ComputedResult }) {
   return (

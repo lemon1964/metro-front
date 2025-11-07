@@ -67,8 +67,7 @@ export default function HomeClient({ headline }: Props) {
 
   const click = () => {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const Ctor = (window as any).AudioContext || (window as any).webkitAudioContext;
+      const Ctor = (window).AudioContext || (window).AudioContext;
       const ctx = new Ctor();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();

@@ -2,7 +2,6 @@
 "use client";
 import BiorhythmChart from "@features/BiorhythmChart";
 import FadeCard from "@ui/FadeCard";
-import { ComputedResult } from "@/@types/mom";
 
 type Props = {
   formDob: string;

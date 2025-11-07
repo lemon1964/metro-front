@@ -11,10 +11,8 @@ type Q = {
 };
 
 export default function TemperamentQuiz() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const questions = (tdata as any).questions as Q[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const profiles = (tdata as any).profiles as Record<
+  const questions = (tdata).questions as Q[];
+  const profiles = (tdata).profiles as Record<
     TemperamentKey,
     { title: string; brief: string; advice: string[] }
   >;
