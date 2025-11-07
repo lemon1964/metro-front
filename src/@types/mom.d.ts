@@ -1,16 +1,16 @@
-// src/@types/mom.ts
-export type FormState = {
+// src/@types/mom.d.ts
+type FormState = {
     dob: string;
     name: string;
     fav: string;
   };
   
-  export type NameTone = {
+type NameTone = {
     base: string;
     overrides: string[];
   };
   
-  export type LifePathMeaning = {
+type LifePathMeaning = {
     title: string;
     short: string;
     long: string[];
@@ -19,13 +19,13 @@ export type FormState = {
     motto: string;
   };
   
-  export type HintsByChannel = {
+type HintsByChannel = {
     low: string[];
     mid: string[];
     high: string[];
   };
   
-  export type HintsConfig = {
+type HintsConfig = {
     thresholds: {
       low: number;
       high: number;
@@ -35,7 +35,7 @@ export type FormState = {
     intel: HintsByChannel;
   };
   
-  export type ComputedResult = {
+type ComputedResult = {
     bio: {
       phys: number;
       emo: number;
@@ -60,4 +60,3 @@ export type FormState = {
     favText: string;
     temperamentProfilesCount: number;
   };
-  

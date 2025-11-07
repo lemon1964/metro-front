@@ -3,14 +3,6 @@ import nameNumberData from "@data/meanings/name-number.json";
 import hintsDataJson from "@data/meanings/hints.json";
 import temperamentData from "@data/meanings/temperament.json";
 
-import type {
-  HintsConfig,
-  LifePathMeaning,
-  NameTone,
-  ComputedResult,
-  FormState,
-} from "@/@types/mom";
-
 import { biorhythmToday, nextZeroCrossings } from "@/utils/biorhythm";
 import { lifePathFromDOB, nameNumber, playfulNumberMeaning } from "@/utils/numerology";
 
