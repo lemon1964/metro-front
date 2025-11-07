@@ -14,8 +14,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "Myself on Metro",
-  description: "Лёгкое зеркало про тебя: биоритмы, имя, путь, темперамент.",
+  title: "Вы — сегодня | Myself on Metro",
+  description: "Быстрый взгляд на твой день: биоритмы, число пути, имя, темперамент.",
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+  },
+  // themeColor: [
+  //   { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  //   { media: "(prefers-color-scheme: dark)", color: "#111827" },
+  // ],
 };
 
 export default function RootLayout({

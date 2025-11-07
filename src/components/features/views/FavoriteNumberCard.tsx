@@ -1,0 +1,23 @@
+// src/components/features/views/FavoriteNumberCard.tsx
+"use client";
+import FadeCard from "@ui/FadeCard";
+import DemoBadge from "@ui/DemoBadge";
+import { ComputedResult } from "@/@types/mom";
+
+export default function FavoriteNumberCard({ result }: { result: ComputedResult }) {
+  return (
+    <FadeCard>
+      <h2 className="text-xl font-bold mb-2">Любимое число</h2>
+      <p className="text-sm leading-relaxed">{result.favText}</p>
+      <p className="mt-3 text-xs text-gray-500">
+        Профилей темперамента поддерживается: {result.temperamentProfilesCount}
+      </p>
+      <div className="mt-4 flex items-center gap-2">
+        <DemoBadge />
+        <span className="text-xs text-gray-500">
+          Вся магия твоих чисел позже появится в Pro-режиме.
+        </span>
+      </div>
+    </FadeCard>
+  );
+}

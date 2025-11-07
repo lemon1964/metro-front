@@ -18,10 +18,19 @@ export async function generateMetadata(
   const ogUrl = `/api/og?${params}`;
 
   return {
-    title: "Myself on Metro",
-    description: "Лёгкое зеркало про вас: биоритмы, имя, путь, темперамент.",
-    openGraph: { images: [ogUrl] },
-    twitter:  { card: "summary_large_image", images: [ogUrl] },
+    title: "Вы — сегодня | Myself on Metro",
+    description: "Быстрый взгляд на твой день: ритмы, числа, имя, темперамент за минуту.",
+    openGraph: {
+      title: "Вы — сегодня | Myself on Metro",
+      description: "Лёгкое зеркало твоего дня.",
+      images: [ogUrl],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Вы — сегодня | Myself on Metro",
+      description: "Лёгкое зеркало твоего дня.",
+      images: [ogUrl],
+    },
   };
 }
 
@@ -29,9 +38,11 @@ export default async function Page(
   { searchParams }: { searchParams: Promise<Record<string, string | undefined>> }
 ) {
   const sp = await searchParams;
-  const headline = sp.headline === "v2"
-    ? "Зеркало про вас — мгновенно"
-    : "Myself on Metro 🚇";
+
+  const headline =
+    sp.headline === "v2"
+      ? "Зеркало про тебя — мгновенно"
+      : "Вы — сегодня";
 
   return <HomeClient headline={headline} />;
 }
