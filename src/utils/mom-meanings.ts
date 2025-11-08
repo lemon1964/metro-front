@@ -15,15 +15,15 @@ function pickZone(v: number, low: number, high: number): "low" | "mid" | "high" 
   return "mid";
 }
 
-function randomSamples<T>(arr: T[], n: number): T[] {
-  const copy = [...arr];
-  const out: T[] = [];
-  for (let i = 0; i < n && copy.length; i++) {
-    const idx = Math.floor(Math.random() * copy.length);
-    out.push(copy.splice(idx, 1)[0]);
-  }
-  return out;
-}
+// function randomSamples<T>(arr: T[], n: number): T[] {
+//   const copy = [...arr];
+//   const out: T[] = [];
+//   for (let i = 0; i < n && copy.length; i++) {
+//     const idx = Math.floor(Math.random() * copy.length);
+//     out.push(copy.splice(idx, 1)[0]);
+//   }
+//   return out;
+// }
 
 export function buildHintsFromValue(
   channel: "phys" | "emo" | "intel",
