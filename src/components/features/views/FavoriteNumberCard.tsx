@@ -14,7 +14,7 @@ export default function FavoriteNumberCard({ result }: { result: ComputedResult 
       <div className="mt-4 flex items-center gap-2">
         <DemoBadge />
         <span className="text-xs text-gray-500">
-          Вся магия твоих чисел позже появится в Pro-режиме.
+          Все загадки твоих чисел откроются в Pro-версии.
         </span>
       </div>
     </FadeCard>

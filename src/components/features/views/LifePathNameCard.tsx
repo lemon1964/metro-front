@@ -32,7 +32,7 @@ export default function LifePathNameCard({ result }: { result: ComputedResult })
       <div className="mt-4 flex items-center gap-2">
         <DemoBadge />
         <span className="text-xs text-gray-500">
-          Вся история имени откроется позже в расширенной версии.
+          Вся история имени откроется в Pro-версии.
         </span>
       </div>
     </FadeCard>

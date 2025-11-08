@@ -25,12 +25,26 @@ function randomSamples<T>(arr: T[], n: number): T[] {
   return out;
 }
 
-export function buildHintsFromValue(channel: "phys" | "emo" | "intel", v: number): string[] {
-  const { low, high } = hintsData.thresholds;
+export function buildHintsFromValue(
+  channel: "phys" | "emo" | "intel",
+  v: number
+): string[] {
+  const low = hintsData.thresholds.low;
+  const high = hintsData.thresholds.high;
   const zone = pickZone(v, low, high);
-  const pool = hintsData[channel][zone] ?? [];
-  return randomSamples(pool, Math.min(2, pool.length));
+  const pool: string[] = hintsData[channel][zone] ?? [];
+
+  // детерминированно: берём первые 2
+  const limit = pool.length >= 2 ? 2 : pool.length;
+  return pool.slice(0, limit);
 }
+
+// export function buildHintsFromValue(channel: "phys" | "emo" | "intel", v: number): string[] {
+//   const { low, high } = hintsData.thresholds;
+//   const zone = pickZone(v, low, high);
+//   const pool = hintsData[channel][zone] ?? [];
+//   return randomSamples(pool, Math.min(2, pool.length));
+// }
 
 export function buildLifePathMeaning(lpValue: string): LifePathMeaning {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
