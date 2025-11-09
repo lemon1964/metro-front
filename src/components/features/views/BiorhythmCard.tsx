@@ -17,8 +17,8 @@ export default function BiorhythmCard({
   result,
   onClickShareImage,
   onClickShareLink,
-  // onClickUpsell,
-}: Props) {
+}: // onClickUpsell,
+Props) {
   return (
     <FadeCard>
       <h2 className="text-xl font-bold mb-2">Биоритмы — сегодня</h2>
@@ -48,8 +48,8 @@ export default function BiorhythmCard({
       </ul>
 
       <div className="mt-3 text-xs text-gray-500">
-        Ближайшие «критические» дни: физ: {result.zeros.physIn ?? "—"} дн., эмо:{" "}
-        {result.zeros.emoIn ?? "—"} дн., интеллект: {result.zeros.intelIn ?? "—"} дн.
+        Ближайшие максимумы: физ: {result.peaks.physIn ?? "—"} дн., эмо: {result.peaks.emoIn ?? "—"}{" "}
+        дн., интеллект: {result.peaks.intelIn ?? "—"} дн.
       </div>
 
       <div className="mt-4 flex items-center gap-2">
@@ -58,13 +58,6 @@ export default function BiorhythmCard({
       </div>
 
       <div className="mt-4 flex gap-2 flex-wrap">
-        {/* <button
-          className="rounded-xl px-4 py-2 border shadow-sm hover:shadow transition"
-          onClick={onClickUpsell}
-        >
-          График на 14 дней • 25 ₽
-        </button> */}
-
         <button
           className="rounded-xl px-4 py-2 border shadow-sm hover:shadow transition"
           onClick={onClickShareImage}

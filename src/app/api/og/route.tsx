@@ -78,7 +78,7 @@ export async function GET(req: Request) {
               </div>
 
               <div style={{ display: "flex", marginTop: 10 }}>
-                <div style={{ fontSize: 26, color: "#111827" }}>Life Path</div>
+                <div style={{ fontSize: 26, color: "#111827" }}>Число пути</div>
               </div>
               <div style={{ display: "flex" }}>
                 <div style={{ fontSize: 68, fontWeight: 900, lineHeight: 1 }}>{lp}</div>

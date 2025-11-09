@@ -4,7 +4,7 @@ import nameNumberData from "@data/meanings/name-number.json";
 import hintsDataJson from "@data/meanings/hints.json";
 import temperamentData from "@data/meanings/temperament.json";
 
-import { biorhythmToday, nextZeroCrossings } from "@/utils/biorhythm";
+import { biorhythmToday, nextPeaks } from "@/utils/biorhythm";
 import { lifePathFromDOB, nameNumber, playfulNumberMeaning } from "@/utils/numerology";
 
 const hintsData = hintsDataJson as HintsConfig;
@@ -15,20 +15,7 @@ function pickZone(v: number, low: number, high: number): "low" | "mid" | "high" 
   return "mid";
 }
 
-// function randomSamples<T>(arr: T[], n: number): T[] {
-//   const copy = [...arr];
-//   const out: T[] = [];
-//   for (let i = 0; i < n && copy.length; i++) {
-//     const idx = Math.floor(Math.random() * copy.length);
-//     out.push(copy.splice(idx, 1)[0]);
-//   }
-//   return out;
-// }
-
-export function buildHintsFromValue(
-  channel: "phys" | "emo" | "intel",
-  v: number
-): string[] {
+export function buildHintsFromValue(channel: "phys" | "emo" | "intel", v: number): string[] {
   const low = hintsData.thresholds.low;
   const high = hintsData.thresholds.high;
   const zone = pickZone(v, low, high);
@@ -38,13 +25,6 @@ export function buildHintsFromValue(
   const limit = pool.length >= 2 ? 2 : pool.length;
   return pool.slice(0, limit);
 }
-
-// export function buildHintsFromValue(channel: "phys" | "emo" | "intel", v: number): string[] {
-//   const { low, high } = hintsData.thresholds;
-//   const zone = pickZone(v, low, high);
-//   const pool = hintsData[channel][zone] ?? [];
-//   return randomSamples(pool, Math.min(2, pool.length));
-// }
 
 export function buildLifePathMeaning(lpValue: string): LifePathMeaning {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,7 +75,7 @@ export function computeResult(form: FormState): ComputedResult | null {
   if (!form.dob) return null;
 
   const bio = biorhythmToday(form.dob);
-  const zeros = nextZeroCrossings(form.dob, 21);
+  const peaks = nextPeaks(form.dob);
 
   const physHints = buildHintsFromValue("phys", bio.phys);
   const emoHints = buildHintsFromValue("emo", bio.emo);
@@ -116,7 +96,7 @@ export function computeResult(form: FormState): ComputedResult | null {
 
   return {
     bio,
-    zeros,
+    peaks,
     physHints,
     emoHints,
     intHints,

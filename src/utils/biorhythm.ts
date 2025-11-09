@@ -63,26 +63,50 @@ export function biorhythmRangeFrom(dobISO: string, startOffsetDays: number, days
   }
   return arr;
 }
-
   
-  export function nextZeroCrossings(dobISO: string, lookAheadDays = 21, refDate = new Date()) {
-    // грубая оценка ближайших «критических» дней — когда знак меняется
-    const t0 = daysSinceBirth(dobISO, refDate);
-    const check = (period: number) => {
-      let prev = biorhythmValue(t0, period);
-      for (let d = 1; d <= lookAheadDays; d++) {
-        const curr = biorhythmValue(t0 + d, period);
-        if ((prev <= 0 && curr > 0) || (prev >= 0 && curr < 0)) return d;
-        prev = curr;
+  // export function nextZeroCrossings(dobISO: string, lookAheadDays = 21, refDate = new Date()) {
+  //   // грубая оценка ближайших «критических» дней — когда знак меняется
+  //   const t0 = daysSinceBirth(dobISO, refDate);
+  //   const check = (period: number) => {
+  //     let prev = biorhythmValue(t0, period);
+  //     for (let d = 1; d <= lookAheadDays; d++) {
+  //       const curr = biorhythmValue(t0 + d, period);
+  //       if ((prev <= 0 && curr > 0) || (prev >= 0 && curr < 0)) return d;
+  //       prev = curr;
+  //     }
+  //     return null;
+  //   };
+  //   return {
+  //     physIn:  check(P_PHYS),
+  //     emoIn:   check(P_EMO),
+  //     intelIn: check(P_INT),
+  //   };
+  // }
+
+  export function nextPeaks(dob: string) {
+    const birth = new Date(dob + "T00:00:00");
+    const today = new Date();
+    const diffDays = Math.floor(
+      (today.getTime() - birth.getTime()) / (1000 * 60 * 60 * 24)
+    );
+  
+    function nextPeak(period: number): number {
+      const base = period / 4; // первый максимум sin в t = P/4
+      if (diffDays <= base) {
+        return Math.round(base - diffDays);
       }
-      return null;
-    };
+      const k = Math.ceil((diffDays - base) / period);
+      const next = base + k * period;
+      return Math.round(next - diffDays);
+    }
+  
     return {
-      physIn:  check(P_PHYS),
-      emoIn:   check(P_EMO),
-      intelIn: check(P_INT),
+      physIn: nextPeak(23),
+      emoIn: nextPeak(28),
+      intelIn: nextPeak(33),
     };
   }
+  
   
 export function hintFromValue(v: number, label: "phys"|"emo"|"intel"): string {
   const strong = v > 0.5;

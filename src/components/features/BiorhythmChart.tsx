@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef } from "react";
-// import { biorhythmRange } from "@/utils/biorhythm";
 import { biorhythmRangeFrom } from "@/utils/biorhythm";
 
 export default function BiorhythmChart({ dob, days = 14 }: { dob: string; days?: number }) {
@@ -58,26 +57,14 @@ export default function BiorhythmChart({ dob, days = 14 }: { dob: string; days?:
     ctx.strokeStyle = "rgba(234,88,12,1)";  drawLine("intel");  // оранжевый
 
     // точки: вчера/позавчера/позапозавчера + сегодня (индексы 0..3)
-    // drawDot(0, "phys",  "rgba(99,102,241,0.9)", 3);
-    // drawDot(1, "phys",  "rgba(99,102,241,0.9)", 3);
-    // drawDot(2, "phys",  "rgba(99,102,241,0.9)", 3);
     drawDot(3, "phys",  "rgba(99,102,241,1.0)", 4);
-
-    // drawDot(0, "emo",   "rgba(16,185,129,0.9)", 3);
-    // drawDot(1, "emo",   "rgba(16,185,129,0.9)", 3);
-    // drawDot(2, "emo",   "rgba(16,185,129,0.9)", 3);
     drawDot(3, "emo",   "rgba(16,185,129,1.0)", 4);
-
-    // drawDot(0, "intel", "rgba(234,88,12,0.9)",  3);
-    // drawDot(1, "intel", "rgba(234,88,12,0.9)",  3);
-    // drawDot(2, "intel", "rgba(234,88,12,0.9)",  3);
     drawDot(3, "intel", "rgba(234,88,12,1.0)",  4);
   }, [dob, days]);
 
   return (
     <div className="rounded-xl border border-black/10 bg-white/60 dark:bg-white/5 p-3">
       <div className="text-sm text-gray-600 mb-2">Биоритмы: 3 дня назад → 10 дней вперёд</div>
-      <div className="text-sm text-yellow-100 mb-2">Опция графика будет платной</div>
       <canvas ref={ref} className="w-full h-40 block" />
       <div className="mt-2 text-xs text-gray-500">
         Сегодня — точка; физ (индиго), эмо (зелёный), интеллект (оранжевый).

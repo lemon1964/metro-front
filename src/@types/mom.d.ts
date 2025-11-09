@@ -41,7 +41,7 @@ type ComputedResult = {
       emo: number;
       intel: number;
     };
-    zeros: {
+    peaks: {
       physIn: number | null;
       emoIn: number | null;
       intelIn: number | null;

@@ -16,7 +16,6 @@ type Props = {
 
 export default function HomeClient({ headline, initialForm }: Props) {
   const [form, setForm] = useState<FormState>(() => initialForm ?? { dob: "", name: "", fav: "" });
-  // const [form, setForm] = useState<FormState>({ dob: "", name: "", fav: "" });
 
   // Подтягиваем сохранённые данные после первого кадра
   useEffect(() => {
@@ -91,7 +90,6 @@ export default function HomeClient({ headline, initialForm }: Props) {
   const handleShareImage = () => {
     if (!result) return;
     playClick();
-    // click();
     const params = new URLSearchParams({
       name: form.name || "Гость",
       lp: result.lp.value,
@@ -146,7 +144,7 @@ export default function HomeClient({ headline, initialForm }: Props) {
             {headline}
           </h1>
           <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">
-            Введи пару цифр про себя — и за минуту увидишь свои ритмы, число пути, тон имени и
+            Введи пару цифр про себя — сразу увидишь свои ритмы, число пути, тон имени и
             настроение дня.
           </p>
           <p className="mt-1 text-xs text-gray-400">
@@ -217,7 +215,7 @@ export default function HomeClient({ headline, initialForm }: Props) {
           <FadeCard>
             <h2 className="text-xl font-bold mb-2">Темперамент (мини-тест)</h2>
             <p className="text-sm text-gray-600 mb-3">
-              10 коротких вопросов — покажем профиль и мягкие советы.
+              10 коротких вопросов — покажем профиль и лёгкие советы.
             </p>
             <div className="max-w-2xl">
               <TemperamentQuiz />
@@ -225,7 +223,7 @@ export default function HomeClient({ headline, initialForm }: Props) {
           </FadeCard>
         </section>
         <footer className="mt-10 text-[10px] text-gray-400 text-center">
-          Данные не сохраняются. Все расчёты выполняются в браузере.
+          Данные в демо не сохраняются. Все расчёты выполняются в браузере.
         </footer>
       </div>
     </main>

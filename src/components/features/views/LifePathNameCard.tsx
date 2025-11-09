@@ -18,6 +18,10 @@ export default function LifePathNameCard({ result }: { result: ComputedResult })
         </ul>
       )}
 
+      <p className="mt-2 text-[10px] text-gray-400">
+        Считается как сумма цифр даты рождения, сведённая к одному числу.
+      </p>
+
       <h3 className="mt-4 text-lg font-semibold">Тон имени</h3>
       <p className="text-sm leading-relaxed">{result.nameTone.base}</p>
 
@@ -31,9 +35,7 @@ export default function LifePathNameCard({ result }: { result: ComputedResult })
 
       <div className="mt-4 flex items-center gap-2">
         <DemoBadge />
-        <span className="text-xs text-gray-500">
-          Вся история имени откроется в Pro-версии.
-        </span>
+        <span className="text-xs text-gray-500">Вся история имени откроется в Pro-версии.</span>
       </div>
     </FadeCard>
   );
