@@ -1,0 +1,15 @@
+name: ping-render
+on:
+  schedule:
+    - cron: "*/12 5-22 * * *"  # каждые 12 минут 06:00–22:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl healthz
+        run: |
+          curl -fsS "$RENDER_URL/api/healthz" || true
+    env:
+      RENDER_URL: https://metro-front.onrender.com/
