@@ -1,7 +1,6 @@
 // src/components/features/HomeClient.tsx
 "use client";
 import { useEffect, useMemo, useState } from "react";
-// import { useRouter } from "next/navigation";
 
 import FadeCard from "@ui/FadeCard";
 import TemperamentQuiz from "@features/TemperamentQuiz";
@@ -16,8 +15,6 @@ type Props = {
 };
 
 export default function HomeClient({ headline, initialForm }: Props) {
-  // export default function HomeClient({ headline }: Props) {
-  // const router = useRouter();
   const [form, setForm] = useState<FormState>(() => initialForm ?? { dob: "", name: "", fav: "" });
   // const [form, setForm] = useState<FormState>({ dob: "", name: "", fav: "" });
 
@@ -54,13 +51,6 @@ export default function HomeClient({ headline, initialForm }: Props) {
       localStorage.setItem("mom_form", JSON.stringify(form));
     } catch {}
   }, [form]);
-  // useEffect(() => {
-  //   try {
-  //     localStorage.setItem("mom_form", JSON.stringify(form));
-  //   } catch {
-  //     // ignore
-  //   }
-  // }, [form]);
 
   const result: ComputedResult | null = useMemo(() => computeResult(form), [form]);
 
@@ -81,27 +71,6 @@ export default function HomeClient({ headline, initialForm }: Props) {
       // если что-то пошло не так — просто без звука
     }
   }
-
-  // const click = () => {
-  //   try {
-  //     const Ctor = (window).AudioContext || (window).AudioContext;
-  //     const ctx = new Ctor();
-  //     const osc = ctx.createOscillator();
-  //     const gain = ctx.createGain();
-  //     osc.type = "square";
-  //     osc.frequency.value = 880;
-  //     gain.gain.value = 0.05;
-  //     osc.connect(gain);
-  //     gain.connect(ctx.destination);
-  //     osc.start();
-  //     setTimeout(() => {
-  //       osc.stop();
-  //       ctx.close();
-  //     }, 100);
-  //   } catch {
-  //     // no audio (mobile / permissions) — ок
-  //   }
-  // };
 
   const clarityText = useMemo(() => {
     if (!result) return "";
@@ -166,40 +135,8 @@ export default function HomeClient({ headline, initialForm }: Props) {
     }
   };
 
-  // const handleShareLink = () => {
-  //   if (!result) return;
-  //   playClick();
-
-  //   const params = new URLSearchParams({
-  //     name: form.name || "Гость",
-  //     lp: result.lp.value,
-  //     phys: result.bio.phys.toFixed(2),
-  //     emo: result.bio.emo.toFixed(2),
-  //     intel: result.bio.intel.toFixed(2),
-  //   });
-
-  //   const shareUrl = `${window.location.origin}/?${params.toString()}`;
-
-  //   if (navigator.clipboard && navigator.clipboard.writeText) {
-  //     navigator.clipboard
-  //       .writeText(shareUrl)
-  //       .then(() => {
-  //         alert("Ссылка скопирована. Можно отправлять кому хочешь.");
-  //       })
-  //       .catch(() => {
-  //         // fallback — хотя бы показать в адресной строке
-  //         router.replace(`/?${params.toString()}`);
-  //         alert("Я открыл ссылку в адресной строке — скопируй её вручную.");
-  //       });
-  //   } else {
-  //     // старые браузеры: просто обновим URL
-  //     router.replace(`/?${params.toString()}`);
-  //     alert("Ссылка в адресной строке. Скопируй её вручную.");
-  //   }
-  // };
-
   return (
-    <main className="min-h-screen p-6 pb-28 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-black">
+    <main className="min-h-screen p-6 pb-28 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-black text-gray-900 dark:text-gray-50">
       <div className="mx-auto max-w-5xl space-y-6">
         <header className="pt-4">
           <h1
