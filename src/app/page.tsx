@@ -10,21 +10,18 @@ type PageProps = {
   searchParams: Promise<Search>;
 };
 
-export async function generateMetadata(
-  { searchParams }: PageProps
-): Promise<Metadata> {
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const sp = await searchParams;
 
-  const name =
-    typeof sp.name === "string" && sp.name.trim() ? sp.name : "Гость";
-  const lp =
-    typeof sp.lp === "string" && sp.lp.trim() ? sp.lp : "-";
-  const phys =
-    typeof sp.phys === "string" && sp.phys.trim() ? sp.phys : "0.00";
-  const emo =
-    typeof sp.emo === "string" && sp.emo.trim() ? sp.emo : "0.00";
-  const intel =
-    typeof sp.intel === "string" && sp.intel.trim() ? sp.intel : "0.00";
+  if (sp.from) {
+    console.log("[MOM] from:", sp.from);
+  }
+
+  const name = typeof sp.name === "string" && sp.name.trim() ? sp.name : "Гость";
+  const lp = typeof sp.lp === "string" && sp.lp.trim() ? sp.lp : "-";
+  const phys = typeof sp.phys === "string" && sp.phys.trim() ? sp.phys : "0.00";
+  const emo = typeof sp.emo === "string" && sp.emo.trim() ? sp.emo : "0.00";
+  const intel = typeof sp.intel === "string" && sp.intel.trim() ? sp.intel : "0.00";
 
   const params = new URLSearchParams({ name, lp, phys, emo, intel }).toString();
   const ogUrl = `/api/og?${params}`;
@@ -43,9 +40,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page(
-  { searchParams }: PageProps
-) {
+export default async function Page({ searchParams }: PageProps) {
   const sp = await searchParams;
 
   const initialForm = {
