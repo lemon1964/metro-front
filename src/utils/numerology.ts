@@ -58,7 +58,7 @@ const LIFE_PATH_TEXT: Record<string, string> = {
   export function playfulNumberMeaning(n: number): string {
     if (Number.isNaN(n)) return "Выбери число — сыграем с его смыслом.";
     const m = n % 9 || 9;
-    return `В резонансе — ${LIFE_PATH_TEXT[String(m)] ?? ""}`;
+    return `В резонансе «${m}» — ${LIFE_PATH_TEXT[String(m)] ?? ""}`;
     // return `Число ${n}: резонанс «${m}». ${LIFE_PATH_TEXT[String(m)] ?? ""}`;
   }
   

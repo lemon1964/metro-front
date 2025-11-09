@@ -46,12 +46,10 @@ export async function GET(req: Request) {
         >
           {/* Header */}
           <div style={{ display: "flex" }}>
-            <div style={{ fontSize: 34, fontWeight: 800, color: "#111827" }}>
-              Вы — сегодня
-            </div>
-            <div style={{ fontSize: 22, fontWeight: 600, color: "#4b5563" }}>
+            <div style={{ fontSize: 34, fontWeight: 800, color: "#111827" }}>Вы — сегодня</div>
+            {/* <div style={{ fontSize: 22, fontWeight: 600, color: "#4b5563" }}>
               by Myself on Metro 🚇
-            </div>
+            </div> */}
           </div>
 
           {/* Two columns that reflow nicely */}
@@ -110,11 +108,26 @@ export async function GET(req: Request) {
           </div>
 
           {/* Footer */}
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <div style={{ fontSize: 18, color: "#4b5563" }}>
               mirror • ego-snack • subway-friendly
             </div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
+              Myself on Metro 🚇
+            </div>
           </div>
+
+          {/* <div style={{ display: "flex" }}>
+            <div style={{ fontSize: 18, color: "#4b5563" }}>
+              mirror • ego-snack • subway-friendly
+            </div>
+          </div> */}
         </div>
       )
     );

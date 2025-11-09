@@ -144,8 +144,8 @@ export default function HomeClient({ headline, initialForm }: Props) {
             {headline}
           </h1>
           <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">
-            Введи пару цифр про себя — сразу увидишь свои ритмы, число пути, тон имени и
-            настроение дня.
+            Введите пару цифр про себя — получите свои ритмы, число пути, тон имени и настроение
+            дня.
           </p>
           <p className="mt-1 text-xs text-gray-400">
             by <span className="font-semibold">Myself on Metro 🚇</span>
@@ -191,7 +191,7 @@ export default function HomeClient({ headline, initialForm }: Props) {
             </div>
           </form>
           <p className="mt-3 text-xs text-gray-500">
-            Развлекательный сервис. Не про диагнозы и судьбу, а про мягкий фокус на себе.
+            Развлекательный сервис. Мягкий фокус, а не диагнозы и судьба.
           </p>
         </FadeCard>
 
@@ -203,7 +203,6 @@ export default function HomeClient({ headline, initialForm }: Props) {
               result={result}
               onClickShareImage={handleShareImage}
               onClickShareLink={handleShareLink}
-              // onClickUpsell={handleUpsell}
             />
             <LifePathNameCard result={result} />
             <FavoriteNumberCard result={result} />
@@ -216,6 +215,9 @@ export default function HomeClient({ headline, initialForm }: Props) {
             <h2 className="text-xl font-bold mb-2">Темперамент (мини-тест)</h2>
             <p className="text-sm text-gray-600 mb-3">
               10 коротких вопросов — покажем профиль и лёгкие советы.
+            </p>
+            <p className="mt-3 text-xs text-gray-500 mb-3">
+              Профилей темперамента поддерживается: {result?.temperamentProfilesCount}
             </p>
             <div className="max-w-2xl">
               <TemperamentQuiz />
