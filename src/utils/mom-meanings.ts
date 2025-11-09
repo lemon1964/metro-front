@@ -3,7 +3,6 @@ import lifePathData from "@data/meanings/life-path.json";
 import nameNumberData from "@data/meanings/name-number.json";
 import hintsDataJson from "@data/meanings/hints.json";
 import temperamentData from "@data/meanings/temperament.json";
-
 import { biorhythmToday, nextPeaks } from "@/utils/biorhythm";
 import { lifePathFromDOB, nameNumber, playfulNumberMeaning } from "@/utils/numerology";
 

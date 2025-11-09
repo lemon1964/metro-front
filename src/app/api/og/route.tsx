@@ -122,12 +122,6 @@ export async function GET(req: Request) {
               Myself on Metro 🚇
             </div>
           </div>
-
-          {/* <div style={{ display: "flex" }}>
-            <div style={{ fontSize: 18, color: "#4b5563" }}>
-              mirror • ego-snack • subway-friendly
-            </div>
-          </div> */}
         </div>
       )
     );

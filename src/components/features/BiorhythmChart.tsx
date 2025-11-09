@@ -1,3 +1,4 @@
+// src/components/features/BiorhythmChart.tsx
 "use client";
 import { useEffect, useRef } from "react";
 import { biorhythmRangeFrom } from "@/utils/biorhythm";
@@ -27,9 +28,15 @@ export default function BiorhythmChart({ dob, days = 14 }: { dob: string; days?:
     ctx.lineWidth = 1;
     for (let i = 0; i <= days; i++) {
       const x = (i / days) * width;
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
     }
-    ctx.beginPath(); ctx.moveTo(0, height / 2); ctx.lineTo(width, height / 2); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    ctx.stroke();
 
     // данные: -3..+10 дней
     const startOffsetDays = -3;
@@ -40,26 +47,33 @@ export default function BiorhythmChart({ dob, days = 14 }: { dob: string; days?:
       for (let i = 0; i < data.length; i++) {
         const x = (i / (days - 1)) * width;
         const y = height / 2 - (data[i][key] as number) * (height / 2 - 8);
-        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
       }
       ctx.stroke();
     };
     const drawDot = (i: number, key: "phys" | "emo" | "intel", color: string, r = 4) => {
       const x = (i / (days - 1)) * width;
       const y = height / 2 - (data[i][key] as number) * (height / 2 - 8);
-      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = color; ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
     };
 
     // линии
     ctx.lineWidth = 2;
-    ctx.strokeStyle = "rgba(99,102,241,1)"; drawLine("phys");   // индиго
-    ctx.strokeStyle = "rgba(16,185,129,1)"; drawLine("emo");    // зелёный
-    ctx.strokeStyle = "rgba(234,88,12,1)";  drawLine("intel");  // оранжевый
+    ctx.strokeStyle = "rgba(99,102,241,1)";
+    drawLine("phys"); // индиго
+    ctx.strokeStyle = "rgba(16,185,129,1)";
+    drawLine("emo"); // зелёный
+    ctx.strokeStyle = "rgba(234,88,12,1)";
+    drawLine("intel"); // оранжевый
 
     // точки: вчера/позавчера/позапозавчера + сегодня (индексы 0..3)
-    drawDot(3, "phys",  "rgba(99,102,241,1.0)", 4);
-    drawDot(3, "emo",   "rgba(16,185,129,1.0)", 4);
-    drawDot(3, "intel", "rgba(234,88,12,1.0)",  4);
+    drawDot(3, "phys", "rgba(99,102,241,1.0)", 4);
+    drawDot(3, "emo", "rgba(16,185,129,1.0)", 4);
+    drawDot(3, "intel", "rgba(234,88,12,1.0)", 4);
   }, [dob, days]);
 
   return (

@@ -1,3 +1,4 @@
+// src/utils/temperament.ts
 export type TemperamentKey = "choleric" | "sanguine" | "phlegmatic" | "melancholic";
 
 export type TemperamentScores = Record<TemperamentKey, number>;

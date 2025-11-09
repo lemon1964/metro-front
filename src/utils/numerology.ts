@@ -1,4 +1,4 @@
-// metro-front/src/utils/numerology.ts
+// src/utils/numerology.ts
 // Простейшие открытые трактовки для Life Path и числа имени.
 // Таблицы можно расширять в zGPT5 (JSON/MD) и подключать отсюда.
 
@@ -59,6 +59,5 @@ const LIFE_PATH_TEXT: Record<string, string> = {
     if (Number.isNaN(n)) return "Выбери число — сыграем с его смыслом.";
     const m = n % 9 || 9;
     return `В резонансе «${m}» — ${LIFE_PATH_TEXT[String(m)] ?? ""}`;
-    // return `Число ${n}: резонанс «${m}». ${LIFE_PATH_TEXT[String(m)] ?? ""}`;
   }
   

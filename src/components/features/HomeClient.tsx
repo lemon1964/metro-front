@@ -1,7 +1,6 @@
 // src/components/features/HomeClient.tsx
 "use client";
 import { useEffect, useMemo, useState } from "react";
-
 import FadeCard from "@ui/FadeCard";
 import TemperamentQuiz from "@features/TemperamentQuiz";
 import { computeResult } from "@/utils/mom-meanings";
@@ -86,7 +85,6 @@ export default function HomeClient({ headline, initialForm }: Props) {
   }, [result]);
 
   // Handlers
-
   const handleShareImage = () => {
     if (!result) return;
     playClick();

@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -19,10 +20,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/favicon.ico" }],
   },
-  // themeColor: [
-  //   { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  //   { media: "(prefers-color-scheme: dark)", color: "#111827" },
-  // ],
 };
 
 export default function RootLayout({

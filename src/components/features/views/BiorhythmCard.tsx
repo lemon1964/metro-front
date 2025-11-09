@@ -9,7 +9,6 @@ type Props = {
   result: ComputedResult;
   onClickShareImage: () => void;
   onClickShareLink: () => void;
-  // onClickUpsell: () => void;
 };
 
 export default function BiorhythmCard({
@@ -17,8 +16,7 @@ export default function BiorhythmCard({
   result,
   onClickShareImage,
   onClickShareLink,
-}: // onClickUpsell,
-Props) {
+}: Props) {
   return (
     <FadeCard>
       <h2 className="text-xl font-bold mb-2">Биоритмы — сегодня</h2>

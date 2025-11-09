@@ -1,3 +1,4 @@
+// src/components/features/TemperamentQuiz.tsx
 "use client";
 import { useMemo, useState } from "react";
 import ProgressBar from "@ui/ProgressBar";
@@ -11,8 +12,8 @@ type Q = {
 };
 
 export default function TemperamentQuiz() {
-  const questions = (tdata).questions as Q[];
-  const profiles = (tdata).profiles as Record<
+  const questions = tdata.questions as Q[];
+  const profiles = tdata.profiles as Record<
     TemperamentKey,
     { title: string; brief: string; advice: string[] }
   >;
@@ -42,7 +43,9 @@ export default function TemperamentQuiz() {
     <div className="space-y-4">
       {!isDone ? (
         <>
-          <div className="text-sm text-gray-500">Вопрос {step + 1} / {questions.length}</div>
+          <div className="text-sm text-gray-500">
+            Вопрос {step + 1} / {questions.length}
+          </div>
           <div className="text-lg font-medium">{q.text}</div>
           <div className="grid gap-2">
             {q.options.map((o, i) => (
@@ -50,8 +53,8 @@ export default function TemperamentQuiz() {
                 key={i}
                 className="rounded-xl border px-4 py-2 text-left hover:shadow-sm active:scale-[0.99] transition"
                 onClick={() => {
-                  setAnswers((a) => [...a, o.profile]);
-                  setStep((s) => s + 1);
+                  setAnswers(a => [...a, o.profile]);
+                  setStep(s => s + 1);
                 }}
               >
                 {o.label}
@@ -63,11 +66,11 @@ export default function TemperamentQuiz() {
         <>
           <div className="text-lg font-bold">Твой темперамент (топ-профили)</div>
           <div className="text-sm text-gray-600">
-            {result!.top.map((k) => profiles[k].title).join(" + ")}
+            {result!.top.map(k => profiles[k].title).join(" + ")}
           </div>
 
           <div className="grid gap-3">
-            {(["choleric", "sanguine", "phlegmatic", "melancholic"] as TemperamentKey[]).map((k) => (
+            {(["choleric", "sanguine", "phlegmatic", "melancholic"] as TemperamentKey[]).map(k => (
               <div key={k} className="space-y-1">
                 <div className="flex items-baseline justify-between">
                   <div className="font-medium">{profiles[k].title}</div>
@@ -82,14 +85,21 @@ export default function TemperamentQuiz() {
           <div className="mt-3">
             <div className="text-sm font-semibold mb-1">Советы:</div>
             <ul className="list-disc pl-5 text-sm space-y-1">
-              {result!.top.flatMap((k) => profiles[k].advice).map((a, i) => <li key={i}>{a}</li>)}
+              {result!.top
+                .flatMap(k => profiles[k].advice)
+                .map((a, i) => (
+                  <li key={i}>{a}</li>
+                ))}
             </ul>
           </div>
 
           <div className="pt-3">
             <button
               className="rounded-xl px-4 py-2 border shadow-sm hover:shadow transition"
-              onClick={() => { setStep(0); setAnswers([]); }}
+              onClick={() => {
+                setStep(0);
+                setAnswers([]);
+              }}
             >
               Пройти ещё раз
             </button>
