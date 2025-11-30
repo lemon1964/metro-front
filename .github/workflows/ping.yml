@@ -2,8 +2,8 @@ name: ping-render
 
 # каждые 10 минут с 05:00 до 22:59 UTC / в Москве 08:00–01:59
 on:
-  schedule:
-    - cron: "*/10 5-22 * * *"
+  # schedule:
+  #   - cron: "*/10 5-22 * * *"
   workflow_dispatch: {}    # ручной запуск
 
 jobs:
